@@ -30,7 +30,15 @@ namespace gmBabel_PCApp
 
         private void speakButton_Click(object sender, RoutedEventArgs e)
         {
-            string file = polly.sendText(inputTextBox.Text);
+            string text = inputTextBox.Text;
+            if (!String.IsNullOrWhiteSpace(text))
+            {
+                string file = polly.sendText(text);
+                AudioItem newItem = new AudioItem() { Text = text, Voice = "Default", AudioFile = file };
+                clips.Add(newItem);
+
+                outputDataGrid.ItemsSource = clips;
+            }
         }
     }
 
