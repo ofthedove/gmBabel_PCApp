@@ -20,12 +20,14 @@ namespace gmBabel_PCApp
     /// </summary>
     public partial class MainWindow : Window
     {
-        Polly polly = new Polly();
-        List<AudioItem> clips = new List<AudioItem>();
+        Polly polly;
+        List<AudioItem> clips;
 
         public MainWindow()
         {
             InitializeComponent();
+            polly = new Polly();
+            clips = new List<AudioItem>();
         }
 
         private void speakButton_Click(object sender, RoutedEventArgs e)

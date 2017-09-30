@@ -11,6 +11,7 @@ public class Polly
 
     public Polly()
 	{
+        Amazon.Runtime.AWSCredentials credentials = new Amazon.Runtime.StoredProfileAWSCredentials("GMBabel");
         AWSPollyClient = new AmazonPollyClient();
         sreq = new SynthesizeSpeechRequest();
         sreq.OutputFormat = OutputFormat.Mp3;
