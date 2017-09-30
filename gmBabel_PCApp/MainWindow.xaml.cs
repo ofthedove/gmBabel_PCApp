@@ -24,5 +24,10 @@ namespace gmBabel_PCApp
         {
             InitializeComponent();
         }
+
+        private void speakButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
