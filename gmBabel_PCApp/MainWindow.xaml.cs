@@ -20,6 +20,9 @@ namespace gmBabel_PCApp
     /// </summary>
     public partial class MainWindow : Window
     {
+        Polly polly = new Polly();
+        List<AudioItem> clips = new List<AudioItem>();
+
         public MainWindow()
         {
             InitializeComponent();
@@ -27,7 +30,14 @@ namespace gmBabel_PCApp
 
         private void speakButton_Click(object sender, RoutedEventArgs e)
         {
-
+            string file = polly.sendText(inputTextBox.Text);
         }
+    }
+
+    public class AudioItem
+    {
+        public string Text { get; set; }
+        public string Voice { get; set; }
+        public string AudioFile { get; set; }
     }
 }
