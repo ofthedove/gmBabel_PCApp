@@ -1,7 +1,7 @@
 ﻿using System;
 using Amazon.Polly;
 using Amazon.Polly.Model;
-
+using System.IO;
 
 public class Polly
 {
@@ -30,9 +30,9 @@ public class Polly
 
     private string mp3Name()
     {
-        string [] fileArray =GetFiles("/mp3");
+        string [] fileArray =Directory.GetFiles("/mp3");
         
-        if(fileArray = null)
+        if(fileArray == null)
         {
             return "0001";
         }
@@ -41,8 +41,9 @@ public class Polly
             Array.Sort(fileArray);
             string tempString = fileArray[fileArray.Length - 1];
             tempString = tempString.Remove(tempString.Length - 4);
-            int tempInteger = Int32.Parse(tempString);
-            return tempInteger + 1;
+            int tempInteger = Int32.Parse(tempString) +1;
+            string returnString = tempInteger.ToString();
+            return returnString;
         }
     }
 }
