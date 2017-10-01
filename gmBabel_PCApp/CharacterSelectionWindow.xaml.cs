@@ -21,13 +21,15 @@ namespace gmBabel_PCApp
     {
         Polly _polly;
         List<Character> _characters;
+        Character[] _selectedCharacters;
 
-        public CharacterSelectionWindow(Polly polly, List<Character> characters)
+        public CharacterSelectionWindow(Polly polly, List<Character> characters, ref Character[] selectedCharacters)
         {
             InitializeComponent();
 
             _polly = polly;
             _characters = characters;
+            _selectedCharacters = selectedCharacters;
 
             char1ComboBox.ItemsSource = _characters;
             char2ComboBox.ItemsSource = _characters;
@@ -37,14 +39,9 @@ namespace gmBabel_PCApp
             char6ComboBox.ItemsSource = _characters;
         }
 
-        private void allVoicesListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void voiveListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
-        }
-
-        private void quickVoicesListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
+            _characters[Convert.ToInt32(((sender as ComboBox).SelectedItem as ComboBoxItem).Tag)] = ((sender as ComboBox).SelectedValue as Character);
         }
 
         private void deleteButton_Click(object sender, RoutedEventArgs e)

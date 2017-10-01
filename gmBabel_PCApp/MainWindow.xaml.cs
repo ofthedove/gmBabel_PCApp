@@ -22,7 +22,9 @@ namespace gmBabel_PCApp
     {
         Polly polly;
         List<AudioItem> clips;
-        List<Character> characters = new List<Character>();
+        List<Character> characters;
+        Character[] selectedCharacters = new Character[6];
+        Button[] charButtons;
 
         public MainWindow()
         {
@@ -30,8 +32,18 @@ namespace gmBabel_PCApp
 
             polly = new Polly();
             clips = new List<AudioItem>();
+            characters = Character.Load();
 
             outputDataGrid.ItemsSource = clips;
+
+            charButtons = new Button[6];
+            charButtons[0] = characterOneButton;
+            charButtons[1] = characterTwoButton;
+            charButtons[2] = characterThreeButton;
+            charButtons[3] = characterFourButton;
+            charButtons[4] = characterFiveButton;
+            charButtons[5] = characterSixButton;
+            RefreshCharacterButtons();
         }
 
         private void speakButton_Click(object sender, RoutedEventArgs e)
@@ -80,8 +92,32 @@ namespace gmBabel_PCApp
 
         private void characterSettingsButton_Click(object sender, RoutedEventArgs e)
         {
-            CharacterSelectionWindow charSettings = new CharacterSelectionWindow(polly, characters);
+            CharacterSelectionWindow charSettings = new CharacterSelectionWindow(polly, characters, ref selectedCharacters);
             charSettings.ShowDialog();
+
+            RefreshCharacterButtons();
+        }
+
+        private void gmBabel_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            Character.Save(characters);
+        }
+
+        private void RefreshCharacterButtons()
+        {
+            for (int i = 0; i < 6; i++)
+            {
+                if (selectedCharacters[i] == null)
+                {
+                    charButtons[i].Content = "Character " + i;
+                    charButtons[i].IsEnabled = false;
+                }
+                else
+                {
+                    charButtons[i].Content = selectedCharacters[i].CharName;
+                    charButtons[i].IsEnabled = true;
+                }
+            }
         }
     }
 
