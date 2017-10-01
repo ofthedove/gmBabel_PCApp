@@ -32,16 +32,28 @@ namespace gmBabel_PCApp
             _selectedCharacters = selectedCharacters;
 
             char1ComboBox.ItemsSource = _characters;
+            if (selectedCharacters[0] != null)
+                char1ComboBox.SelectedItem = selectedCharacters[0];
             char2ComboBox.ItemsSource = _characters;
+            if (selectedCharacters[1] != null)
+                char1ComboBox.SelectedItem = selectedCharacters[1];
             char3ComboBox.ItemsSource = _characters;
+            if (selectedCharacters[2] != null)
+                char1ComboBox.SelectedItem = selectedCharacters[2];
             char4ComboBox.ItemsSource = _characters;
+            if (selectedCharacters[3] != null)
+                char1ComboBox.SelectedItem = selectedCharacters[3];
             char5ComboBox.ItemsSource = _characters;
+            if (selectedCharacters[4] != null)
+                char1ComboBox.SelectedItem = selectedCharacters[4];
             char6ComboBox.ItemsSource = _characters;
+            if (selectedCharacters[5] != null)
+                char1ComboBox.SelectedItem = selectedCharacters[5];
         }
 
-        private void voiveListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void voiceListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            _characters[Convert.ToInt32(((sender as ComboBox).SelectedItem as ComboBoxItem).Tag)] = ((sender as ComboBox).SelectedValue as Character);
+            _selectedCharacters[Convert.ToInt32((sender as ComboBox).Tag)] = ((sender as ComboBox).SelectedValue as Character);
         }
 
         private void deleteButton_Click(object sender, RoutedEventArgs e)
@@ -79,6 +91,11 @@ namespace gmBabel_PCApp
         {
             CharacterSettingsWindow setWin = new CharacterSettingsWindow(_polly);
             setWin.ShowDialog();
+        }
+
+        private void okayButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

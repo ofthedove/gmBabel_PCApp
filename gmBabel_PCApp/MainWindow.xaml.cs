@@ -94,7 +94,6 @@ namespace gmBabel_PCApp
         {
             CharacterSelectionWindow charSettings = new CharacterSelectionWindow(polly, characters, ref selectedCharacters);
             charSettings.ShowDialog();
-
             RefreshCharacterButtons();
         }
 

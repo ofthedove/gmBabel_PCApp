@@ -22,23 +22,23 @@
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
             <Label x:Name="characterOneLabel"   Content="Character One"   HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Top" Width="100" Height="26" Grid.Column="0"/>
-            <ComboBox x:Name="char1ComboBox" HorizontalAlignment="Left" Margin="10,31,0,0" VerticalAlignment="Top" Width="130" Grid.Column="0" Tag="0" SelectionChanged="voiveListBox_SelectionChanged"/>
+            <ComboBox x:Name="char1ComboBox" HorizontalAlignment="Left" Margin="10,31,0,0" VerticalAlignment="Top" Width="130" Grid.Column="0" Tag="0" SelectionChanged="voiceListBox_SelectionChanged"/>
             <Label x:Name="characterTwoLabel"   Content="Character Two"   HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Top" Width="100" Height="26" Grid.Column="1"/>
-            <ComboBox x:Name="char2ComboBox" HorizontalAlignment="Left" Margin="10,31,0,0" VerticalAlignment="Top" Width="130" Grid.Column="1" Tag="1" SelectionChanged="voiveListBox_SelectionChanged"/>
+            <ComboBox x:Name="char2ComboBox" HorizontalAlignment="Left" Margin="10,31,0,0" VerticalAlignment="Top" Width="130" Grid.Column="1" Tag="1" SelectionChanged="voiceListBox_SelectionChanged"/>
             <Label x:Name="characterThreeLabel" Content="Character Three" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Top" Width="100" Height="26" Grid.Column="2"/>
-            <ComboBox x:Name="char3ComboBox" HorizontalAlignment="Left" Margin="10,31,0,0" VerticalAlignment="Top" Width="130" Grid.Column="2" Tag="2" SelectionChanged="voiveListBox_SelectionChanged"/>
+            <ComboBox x:Name="char3ComboBox" HorizontalAlignment="Left" Margin="10,31,0,0" VerticalAlignment="Top" Width="130" Grid.Column="2" Tag="2" SelectionChanged="voiceListBox_SelectionChanged"/>
             <Label x:Name="characterFourLabel"  Content="Character Four"  HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Top" Width="100" Height="26" Grid.Column="3"/>
-            <ComboBox x:Name="char4ComboBox" HorizontalAlignment="Left" Margin="10,31,0,0" VerticalAlignment="Top" Width="130" Grid.Column="3" Tag="3" SelectionChanged="voiveListBox_SelectionChanged"/>
+            <ComboBox x:Name="char4ComboBox" HorizontalAlignment="Left" Margin="10,31,0,0" VerticalAlignment="Top" Width="130" Grid.Column="3" Tag="3" SelectionChanged="voiceListBox_SelectionChanged"/>
             <Label x:Name="characterFiveLabel"  Content="Character Five"  HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Top" Width="100" Height="26" Grid.Column="4"/>
-            <ComboBox x:Name="char5ComboBox" HorizontalAlignment="Left" Margin="10,31,0,0" VerticalAlignment="Top" Width="130" Grid.Column="4" Tag="4" SelectionChanged="voiveListBox_SelectionChanged"/>
+            <ComboBox x:Name="char5ComboBox" HorizontalAlignment="Left" Margin="10,31,0,0" VerticalAlignment="Top" Width="130" Grid.Column="4" Tag="4" SelectionChanged="voiceListBox_SelectionChanged"/>
             <Label x:Name="characterSixLabel"   Content="Character Six"   HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Top" Width="100" Height="26" Grid.Column="5"/>
-            <ComboBox x:Name="char6ComboBox" HorizontalAlignment="Left" Margin="10,31,0,0" VerticalAlignment="Top" Width="130" Grid.Column="5" Tag="5" SelectionChanged="voiveListBox_SelectionChanged"/>
+            <ComboBox x:Name="char6ComboBox" HorizontalAlignment="Left" Margin="10,31,0,0" VerticalAlignment="Top" Width="130" Grid.Column="5" Tag="5" SelectionChanged="voiceListBox_SelectionChanged"/>
         </Grid>
 
         <Button x:Name="addButton" Content="Add" HorizontalAlignment="Left" Margin="10,10,0,10" Width="75" Grid.Row="1" Click="addButton_Click"/>
         <Button x:Name="deleteButton" Content="Delete" HorizontalAlignment="Left" Margin="90,10,0,10" Width="75" Grid.Row="1" Click="deleteButton_Click"/>
         <Button x:Name="modifyButton" Content="Modify" Margin="170,10,0,10" Grid.Row="1" HorizontalAlignment="Left" Width="75" Click="modifyButton_Click"/>
-        <Button x:Name="okayButton" Content="OK" HorizontalAlignment="Right" Margin="0,0,10,10" VerticalAlignment="Bottom" Width="75" Grid.Row="1"/>
+        <Button x:Name="okayButton" Content="OK" HorizontalAlignment="Right" Margin="0,0,10,10" VerticalAlignment="Bottom" Width="75" Grid.Row="1" Click="okayButton_Click"/>
 
     </Grid>
 </Window>
