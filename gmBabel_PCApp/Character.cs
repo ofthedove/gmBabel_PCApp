@@ -18,7 +18,13 @@ public class Character
 
     public static void Save(List<Character> characterList)
     {
-        string filename = "characters\\charlist.xml";
+        string dir = "characters\\";
+        if (!Directory.Exists(dir))
+        {
+            Directory.CreateDirectory(dir);
+        }
+
+        string filename = "charlist.xml";
         XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<Character>));
 
         TextWriter writer = new StreamWriter(filename);
