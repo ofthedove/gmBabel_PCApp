@@ -9,6 +9,6 @@ namespace gmBabel_PCApp
     class Character
     {
         public string CharName { get; set; }
-        public Voice CharVoice { get; set; }
+        public VoiceSettings CharVoice { get; set; }
     }
 }
