@@ -10,7 +10,7 @@ public class VoiceSettings
 {
     public string VoiceID { get; set; }
     public string Language { get; set; }
-    public string Gender { get; set; }
+    public Polly.MyGender Gender { get; set; }
 
     public static Dictionary<string, string> LanguageOptions()
     {

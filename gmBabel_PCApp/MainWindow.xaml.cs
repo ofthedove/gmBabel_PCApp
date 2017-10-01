@@ -22,6 +22,7 @@ namespace gmBabel_PCApp
     {
         Polly polly;
         List<AudioItem> clips;
+        List<Character> characters = new List<Character>();
 
         public MainWindow()
         {
@@ -79,7 +80,7 @@ namespace gmBabel_PCApp
 
         private void characterSettingsButton_Click(object sender, RoutedEventArgs e)
         {
-            VoiceSelectionWindow charSettings = new VoiceSelectionWindow();
+            CharacterSelectionWindow charSettings = new CharacterSelectionWindow(polly, characters);
             charSettings.ShowDialog();
         }
     }

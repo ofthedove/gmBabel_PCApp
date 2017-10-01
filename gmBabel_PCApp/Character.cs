@@ -6,9 +6,14 @@ using System.Threading.Tasks;
 
 namespace gmBabel_PCApp
 {
-    class Character
+    public class Character
     {
         public string CharName { get; set; }
-        public Voice CharVoice { get; set; }
+        public VoiceSettings CharVoice { get; set; }
+
+        public override string ToString()
+        {
+            return CharName;
+        }
     }
 }

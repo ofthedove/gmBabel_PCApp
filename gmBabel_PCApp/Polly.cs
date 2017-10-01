@@ -13,6 +13,8 @@ public class Polly
 
     string dir = "mp3\\";
 
+    public enum MyGender { Male, Female, All }
+
     public Polly()
 	{
         string access = ConfigurationManager.AppSettings["Access"].ToString();
@@ -59,12 +61,25 @@ public class Polly
         return fileName;
     }
 
-    public List<Voice> GetVoices(string Language)
+    public Dictionary<VoiceId, string> GetVoices(string Language, MyGender gender)
     {
         DescribeVoicesRequest voicesRequest = new DescribeVoicesRequest();
         voicesRequest.LanguageCode = Language;
         DescribeVoicesResponse voicesResponse = AWSPollyClient.DescribeVoices(voicesRequest);
-        return voicesResponse.Voices;
+
+        Dictionary<VoiceId, string> dict = new Dictionary<VoiceId, string>();
+        foreach (Voice voice in voicesResponse.Voices)
+        {
+            if (voice.Gender.Equals(Gender.Male) && (gender.Equals(MyGender.Male) || gender.Equals(MyGender.All)))
+            {
+                dict.Add(voice.Id, voice.Name);
+            }
+            else if (voice.Gender.Equals(Gender.Female) && (gender.Equals(MyGender.Female) || gender.Equals(MyGender.All)))
+            {
+                dict.Add(voice.Id, voice.Name);
+            }
+        }
+        return dict;
     }
 
     private string mp3Name()
