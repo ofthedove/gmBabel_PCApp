@@ -44,6 +44,7 @@ public class Polly
     {
         sreq.Text = UIString;
         sreq.VoiceId = new VoiceId(charVoice.VoiceID);
+
         sres = AWSPollyClient.SynthesizeSpeech(sreq);
 
         string fileName = mp3Name();
