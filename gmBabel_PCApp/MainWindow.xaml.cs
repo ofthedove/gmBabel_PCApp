@@ -76,6 +76,12 @@ namespace gmBabel_PCApp
             audioMediaElement.Source = new Uri("mp3\\" + fileName, UriKind.Relative);
             audioMediaElement.Play();
         }
+
+        private void characterSettingsButton_Click(object sender, RoutedEventArgs e)
+        {
+            VoiceSelectionWindow charSettings = new VoiceSelectionWindow();
+            charSettings.ShowDialog();
+        }
     }
 
     public class AudioItem
