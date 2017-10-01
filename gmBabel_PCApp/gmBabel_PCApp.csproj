@@ -75,6 +75,7 @@
     <Compile Include="CharacterSettingsWindow.xaml.cs">
       <DependentUpon>CharacterSettingsWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="VoiceSettings.cs" />
     <Page Include="CharacterDeleteWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -87,7 +88,6 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Voice.cs" />
     <Compile Include="Polly.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
