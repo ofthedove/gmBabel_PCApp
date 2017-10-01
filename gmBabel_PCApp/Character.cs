@@ -1,14 +1,33 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
-namespace gmBabel_PCApp
+public class Character
 {
-    class Character
+    public string CharName { get; set; }
+    public VoiceSettings CharVoice { get; set; }
+
+    public static void Save(List<Character> characterList)
     {
-        public string CharName { get; set; }
-        public VoiceSettings CharVoice { get; set; }
+        string filename = "characters\\charlist.xml";
+        XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<Character>));
+
+        TextWriter writer = new StreamWriter(filename);
+    }
+
+    public static List<Character> Load()
+    {
+        string filename = "characters\\charlist.xml";
+        XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<Character>));
+
+        FileStream fs = new FileStream(filename, FileMode.OpenOrCreate);
+        TextReader reader = new StreamReader(fs);
+
+        List<Character> characterList = (List<Character>) xmlSerializer.Deserialize(reader);
+        return characterList;
     }
 }
