@@ -41,3 +41,5 @@ public class Character
             List<Character> emptyList = new List<Character>();
             return emptyList;
         }
+    }
+}
