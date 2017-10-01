@@ -36,19 +36,19 @@ namespace gmBabel_PCApp
                 char1ComboBox.SelectedItem = selectedCharacters[0];
             char2ComboBox.ItemsSource = _characters;
             if (selectedCharacters[1] != null)
-                char1ComboBox.SelectedItem = selectedCharacters[1];
+                char2ComboBox.SelectedItem = selectedCharacters[1];
             char3ComboBox.ItemsSource = _characters;
             if (selectedCharacters[2] != null)
-                char1ComboBox.SelectedItem = selectedCharacters[2];
+                char3ComboBox.SelectedItem = selectedCharacters[2];
             char4ComboBox.ItemsSource = _characters;
             if (selectedCharacters[3] != null)
-                char1ComboBox.SelectedItem = selectedCharacters[3];
+                char4ComboBox.SelectedItem = selectedCharacters[3];
             char5ComboBox.ItemsSource = _characters;
             if (selectedCharacters[4] != null)
-                char1ComboBox.SelectedItem = selectedCharacters[4];
+                char5ComboBox.SelectedItem = selectedCharacters[4];
             char6ComboBox.ItemsSource = _characters;
             if (selectedCharacters[5] != null)
-                char1ComboBox.SelectedItem = selectedCharacters[5];
+                char6ComboBox.SelectedItem = selectedCharacters[5];
         }
 
         private void voiceListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
