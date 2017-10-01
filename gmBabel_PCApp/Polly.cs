@@ -66,6 +66,12 @@ public class Polly
 
     public void clear()
     {
+        DirectoryInfo directoryInfo = new DirectoryInfo(dir);
 
+
+        foreach (FileInfo file in directoryInfo.GetFiles())
+        {
+            file.Delete();
+        }
     }
 }
