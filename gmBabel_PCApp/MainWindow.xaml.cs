@@ -26,25 +26,39 @@ namespace gmBabel_PCApp
         public MainWindow()
         {
             InitializeComponent();
+
             polly = new Polly();
             clips = new List<AudioItem>();
+
             outputDataGrid.ItemsSource = clips;
         }
 
         private void speakButton_Click(object sender, RoutedEventArgs e)
         {
             string text = inputTextBox.Text;
-            if (!String.IsNullOrWhiteSpace(text))
+            if (String.IsNullOrWhiteSpace(text))
             {
-                speakButton.IsEnabled = false;
-
-                string file = polly.sendText(text);
-                AudioItem newItem = new AudioItem() { Text = text, Voice = "Default", AudioFile = file };
-                clips.Add(newItem);
-
-                outputDataGrid.Items.Refresh();
-                speakButton.IsEnabled = true;
+                return;
             }
+            foreach (AudioItem item in clips)
+            {
+                if (item.Text.Trim().CompareTo(text.Trim()) == 0)
+                {
+                    PlayAudioFile(item.AudioFile);
+                    return;
+                }
+            }
+
+            speakButton.IsEnabled = false;
+
+            string file = polly.sendText(text);
+            AudioItem newItem = new AudioItem() { Text = text, Voice = "Default", AudioFile = file };
+            PlayAudioFile(newItem.AudioFile);
+            clips.Add(newItem);
+
+            inputTextBox.Text = "";
+            outputDataGrid.Items.Refresh();
+            speakButton.IsEnabled = true;
         }
 
         private void playButton_Click(object sender, RoutedEventArgs e)
@@ -52,9 +66,14 @@ namespace gmBabel_PCApp
             if (sender is Button && (sender as Button).Tag != null)
             {
                 string fileName = (sender as Button).Tag.ToString();
-                audioMediaElement.Source = new Uri("mp3\\" + fileName, UriKind.Relative);
-                audioMediaElement.Play();
+                PlayAudioFile(fileName);
             }
+        }
+
+        private void PlayAudioFile(string fileName)
+        {
+            audioMediaElement.Source = new Uri("mp3\\" + fileName, UriKind.Relative);
+            audioMediaElement.Play();
         }
     }
 
