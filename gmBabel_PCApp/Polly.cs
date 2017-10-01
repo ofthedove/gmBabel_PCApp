@@ -59,7 +59,7 @@ public class Polly
             tempString = tempString.Split('\\')[1];
             tempString = tempString.Remove(tempString.Length - 4);
             int tempInteger = Int32.Parse(tempString) +1;
-            string returnString = tempInteger.ToString();
+            string returnString = tempInteger.ToString().PadLeft(4);
             return returnString;
         }
     }
