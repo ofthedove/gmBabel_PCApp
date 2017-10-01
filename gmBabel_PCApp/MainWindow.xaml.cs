@@ -28,6 +28,7 @@ namespace gmBabel_PCApp
             InitializeComponent();
             polly = new Polly();
             clips = new List<AudioItem>();
+            outputDataGrid.ItemsSource = clips;
         }
 
         private void speakButton_Click(object sender, RoutedEventArgs e)
@@ -35,11 +36,24 @@ namespace gmBabel_PCApp
             string text = inputTextBox.Text;
             if (!String.IsNullOrWhiteSpace(text))
             {
+                speakButton.IsEnabled = false;
+
                 string file = polly.sendText(text);
                 AudioItem newItem = new AudioItem() { Text = text, Voice = "Default", AudioFile = file };
                 clips.Add(newItem);
 
-                outputDataGrid.ItemsSource = clips;
+                outputDataGrid.Items.Refresh();
+                speakButton.IsEnabled = true;
+            }
+        }
+
+        private void playButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender is Button && (sender as Button).Tag != null)
+            {
+                string fileName = (sender as Button).Tag.ToString();
+                audioMediaElement.Source = new Uri("mp3\\" + fileName, UriKind.Relative);
+                audioMediaElement.Play();
             }
         }
     }

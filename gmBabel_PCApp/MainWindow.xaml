@@ -12,14 +12,14 @@
                 <TextBlock x:Name="outputTextBlock" TextWrapping="Wrap"/>
             </ScrollViewer>
         </-->
-        <DataGrid x:Name="outputDataGrid" Margin="10,36,10,69">
+        <DataGrid x:Name="outputDataGrid" Margin="10,36,10,69" AutoGenerateColumns="False" CanUserAddRows="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Text" Binding="{Binding Text}" Width="3*" />
                 <DataGridTextColumn Header="Voice" Binding="{Binding Voice}" Width="1*"/>
                 <DataGridTemplateColumn Header="Play" Width="90">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button Content="Play" Height="23" Width="75" />
+                            <Button Content="Play" Height="23" Width="75" Click="playButton_Click" Tag="{Binding AudioFile}" />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
@@ -30,5 +30,6 @@
         <Label x:Name="outputLabel" Content="Output:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
         <Label x:Name="inputLabel" Content="Input:" Margin="10,0,0,38" Height="26" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="40"/>
 
+        <MediaElement LoadedBehavior="Manual"  x:Name="audioMediaElement" Margin="350,300,350,300" />
     </Grid>
 </Window>
