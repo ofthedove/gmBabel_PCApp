@@ -45,6 +45,7 @@ namespace gmBabel_PCApp
                 if (item.Text.Trim().CompareTo(text.Trim()) == 0)
                 {
                     PlayAudioFile(item.AudioFile);
+                    inputTextBox.Text = "";
                     return;
                 }
             }
