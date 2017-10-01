@@ -63,4 +63,9 @@ public class Polly
             return returnString;
         }
     }
+
+    public void clear()
+    {
+
+    }
 }
