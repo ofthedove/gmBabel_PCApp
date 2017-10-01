@@ -2,6 +2,7 @@
 using Amazon.Polly;
 using Amazon.Polly.Model;
 using System.IO;
+using System.Configuration;
 
 public class Polly
 {
@@ -13,8 +14,10 @@ public class Polly
 
     public Polly()
 	{
+        string access = ConfigurationManager.AppSettings["Access"].ToString();
+        string secret = ConfigurationManager.AppSettings["Secret"].ToString();
         //Amazon.Runtime.AWSCredentials credentials = new Amazon.Runtime.StoredProfileAWSCredentials("GMBabel");
-        AWSPollyClient = new AmazonPollyClient("AKIAIGTMGWHSOZMIUWNA", "y7ruHdTrXgu77GJEOlcBcZz/cOpx7PJqFXRguxV4", Amazon.RegionEndpoint.USWest2);
+        AWSPollyClient = new AmazonPollyClient(access, secret, Amazon.RegionEndpoint.USWest2);
         sreq = new SynthesizeSpeechRequest();
         sreq.OutputFormat = OutputFormat.Mp3;
         sreq.VoiceId = VoiceId.Amy;
