@@ -12,9 +12,9 @@ public class VoiceSettings
     public string Language { get; set; }
     public string Gender { get; set; }
 
-    public static StringDictionary LanguageOptions()
+    public static Dictionary<string, string> LanguageOptions()
     {
-        StringDictionary languageOptions = new StringDictionary();
+        Dictionary<string, string> languageOptions = new Dictionary<string, string>();
         languageOptions.Add("cy-GB", "Welsh (United Kingdom)");
         languageOptions.Add("da-DK", "Danish (Denmark)");
         languageOptions.Add("de-DE", "German (Germany)");
