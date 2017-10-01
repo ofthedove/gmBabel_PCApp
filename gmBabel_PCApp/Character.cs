@@ -25,27 +25,36 @@ public class Character
         }
 
         string filename = "charlist.xml";
+        if (!File.Exists(dir + filename))
+        {
+            using (FileStream fs = File.Create(dir + filename)) { }
+        }
         XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<Character>));
 
-        TextWriter writer = new StreamWriter(filename);
+        TextWriter writer = new StreamWriter(dir + filename);
+
+        xmlSerializer.Serialize(writer, characterList);
+
+        writer.Close();
     }
 
     public static List<Character> Load()
     {
         string filename = "characters\\charlist.xml";
-        XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<Character>));
+        List<Character> characterList = new List<Character>();
 
         if (File.Exists(filename))
         {
-            FileStream fs = new FileStream(filename, FileMode.OpenOrCreate);
-            TextReader reader = new StreamReader(fs);
-            List<Character> characterList = (List<Character>)xmlSerializer.Deserialize(reader);
-            return characterList;
+            XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<Character>));
+            using (FileStream fs = new FileStream(filename, FileMode.OpenOrCreate))
+            {
+                using (TextReader reader = new StreamReader(fs))
+                {
+                    characterList = (List<Character>)xmlSerializer.Deserialize(reader);
+                }
+            }
         }
-        else
-        {
-            List<Character> emptyList = new List<Character>();
-            return emptyList;
-        }
+
+        return characterList;
     }
 }

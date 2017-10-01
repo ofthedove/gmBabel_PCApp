@@ -25,6 +25,7 @@ namespace gmBabel_PCApp
         List<Character> characters;
         Character[] selectedCharacters = new Character[6];
         Button[] charButtons;
+        Character curChar;
 
         public MainWindow()
         {
@@ -55,7 +56,7 @@ namespace gmBabel_PCApp
             }
             foreach (AudioItem item in clips)
             {
-                if (item.Text.Trim().CompareTo(text.Trim()) == 0)
+                if (item.Voice.CompareTo(curChar.CharName) == 0 && item.Text.Trim().CompareTo(text.Trim()) == 0)
                 {
                     PlayAudioFile(item.AudioFile);
                     inputTextBox.Text = "";
@@ -65,8 +66,18 @@ namespace gmBabel_PCApp
 
             speakButton.IsEnabled = false;
 
-            string file = polly.sendText(text);
-            AudioItem newItem = new AudioItem() { Text = text, Voice = "Default", AudioFile = file };
+            string file;
+            AudioItem newItem;
+            if (curChar == null)
+            {
+                file = polly.sendText(text);
+                newItem = new AudioItem() { Text = text, Voice = "Default", AudioFile = file };
+            }
+            else
+            {
+                file = polly.sendText(text, curChar.CharVoice);
+                newItem = new AudioItem() { Text = text, Voice = curChar.CharName, AudioFile = file };
+            }
             PlayAudioFile(newItem.AudioFile);
             clips.Add(newItem);
 
@@ -117,6 +128,12 @@ namespace gmBabel_PCApp
                     charButtons[i].IsEnabled = true;
                 }
             }
+        }
+
+        private void charButton_Click(object sender, RoutedEventArgs e)
+        {
+            int i = Convert.ToInt32((sender as Button).Tag);
+            curChar = selectedCharacters[i];
         }
     }
 
