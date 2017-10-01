@@ -29,10 +29,15 @@ public class Character
         string filename = "characters\\charlist.xml";
         XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<Character>));
 
-        FileStream fs = new FileStream(filename, FileMode.OpenOrCreate);
-        TextReader reader = new StreamReader(fs);
-
-        List<Character> characterList = (List<Character>) xmlSerializer.Deserialize(reader);
-        return characterList;
-    }
-}
+        if (File.Exists(filename))
+        {
+            FileStream fs = new FileStream(filename, FileMode.OpenOrCreate);
+            TextReader reader = new StreamReader(fs);
+            List<Character> characterList = (List<Character>)xmlSerializer.Deserialize(reader);
+            return characterList;
+        }
+        else
+        {
+            List<Character> emptyList = new List<Character>();
+            return emptyList;
+        }
