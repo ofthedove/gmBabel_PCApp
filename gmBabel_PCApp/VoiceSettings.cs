@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-public class Voice
+public class VoiceSettings
 {
     public string VoiceID { get; set; }
     public string Language { get; set; }

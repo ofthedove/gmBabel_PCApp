@@ -40,7 +40,7 @@ public class Polly
         return fileName;
     }
 
-    public string sendText(string UIString, Voice charVoice)
+    public string sendText(string UIString, VoiceSettings charVoice)
     {
         sreq.Text = UIString;
         sreq.VoiceId = new VoiceId(charVoice.VoiceID);
@@ -56,6 +56,15 @@ public class Polly
             fileStream.Close();
         }
         return fileName;
+    }
+
+    public DescribeVoicesResponse GetVoices(string Language)
+    {
+        DescribeVoicesRequest voicesRequest = new DescribeVoicesRequest();
+        voicesRequest.LanguageCode = Language;
+        DescribeVoicesResponse voicesResponse = AWSPollyClient.DescribeVoices(voicesRequest);
+        return voicesResponse;
+    
     }
 
     private string mp3Name()
