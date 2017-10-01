@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:gmBabel_PCApp"
         mc:Ignorable="d"
         FocusManager.FocusedElement="{Binding ElementName=inputTextBox}"
-        Title="gmBabel" Height="700" Width="1000">
+        Title="gmBabel" Height="700" Width="1000" Closing="gmBabel_Closing">
     <Grid>
         <!--Border Margin="10,36,10,69" BorderBrush="#FF707070" BorderThickness="1">
             <ScrollViewer>
