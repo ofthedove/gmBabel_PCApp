@@ -11,6 +11,11 @@ public class Character
     public string CharName { get; set; }
     public VoiceSettings CharVoice { get; set; }
 
+    public override string ToString()
+    {
+        return CharName;
+    }
+
     public static void Save(List<Character> characterList)
     {
         string filename = "characters\\charlist.xml";
