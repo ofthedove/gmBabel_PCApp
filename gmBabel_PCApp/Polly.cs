@@ -3,6 +3,7 @@ using Amazon.Polly;
 using Amazon.Polly.Model;
 using System.IO;
 using System.Configuration;
+using System.Collections.Generic;
 
 public class Polly
 {
@@ -58,13 +59,12 @@ public class Polly
         return fileName;
     }
 
-    public DescribeVoicesResponse GetVoices(string Language)
+    public List<Voice> GetVoices(string Language)
     {
         DescribeVoicesRequest voicesRequest = new DescribeVoicesRequest();
         voicesRequest.LanguageCode = Language;
         DescribeVoicesResponse voicesResponse = AWSPollyClient.DescribeVoices(voicesRequest);
-        return voicesResponse;
-    
+        return voicesResponse.Voices;
     }
 
     private string mp3Name()
