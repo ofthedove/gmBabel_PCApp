@@ -40,6 +40,23 @@ public class Polly
         return fileName;
     }
 
+    public string sendText(string UIString, Voice charVoice)
+    {
+        sreq.Text = UIString;
+        sreq.VoiceId = new VoiceId(charVoice.VoiceID);
+        sres = AWSPollyClient.SynthesizeSpeech(sreq);
+
+        string fileName = mp3Name();
+        fileName = fileName + ".mp3";
+        using (var fileStream = File.Create(dir + fileName))
+        {
+            sres.AudioStream.CopyTo(fileStream);
+            fileStream.Flush();
+            fileStream.Close();
+        }
+        return fileName;
+    }
+
     private string mp3Name()
     {
         if (!Directory.Exists(dir))
@@ -59,8 +76,19 @@ public class Polly
             tempString = tempString.Split('\\')[1];
             tempString = tempString.Remove(tempString.Length - 4);
             int tempInteger = Int32.Parse(tempString) +1;
-            string returnString = tempInteger.ToString();
+            string returnString = tempInteger.ToString().PadLeft(4, '0');
             return returnString;
+        }
+    }
+
+    public void clear()
+    {
+        DirectoryInfo directoryInfo = new DirectoryInfo(dir);
+
+
+        foreach (FileInfo file in directoryInfo.GetFiles())
+        {
+            file.Delete();
         }
     }
 }
